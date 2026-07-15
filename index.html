@@ -1,118 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yajora — Fresh Grocery Delivered</title>
-    <meta name="description" content="Shop fresh groceries at Yajora. Quality products, fast delivery within 2 working days." />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/index.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yajora – Fresh Groceries Delivered</title>
+  <meta name="description" content="Shop fresh groceries, quality produce, and pantry staples at Yajora. Fast delivery, great prices.">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- favicon.ico can be added later – skip for now -->
 </head>
 <body>
+  <header id="main-header" class="site-header">
+    <!-- Header will be built by JavaScript -->
+  </header>
 
-    <!-- ========== HEADER ========== -->
-    <header class="site-header" role="banner">
-        <div class="container">
-            <a href="index.html" class="brand" aria-label="Yajora Home">YAJORA</a>
+  <main id="main-content">
+    <h1>Welcome to Yajora</h1>
+    <p>Your grocery marketplace – coming soon.</p>
+  </main>
 
-            <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main Navigation">
-                <ul>
-                    <li><a href="index.html" aria-current="page">Home</a></li>
-                    <li><a href="#featured">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                </ul>
-            </nav>
+  <footer id="main-footer" class="site-footer">
+    <p>&copy; 2026 Yajora. All rights reserved.</p>
+  </footer>
 
-            <div class="header-actions">
-                <a href="cart.html" class="cart-icon" aria-label="Shopping cart">
-                    🛒
-                    <span class="cart-count" id="cart-count" aria-live="polite">0</span>
-                </a>
-                <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- ========== MAIN CONTENT ========== -->
-    <main>
-
-        <!-- Hero -->
-        <section class="hero" style="background: var(--gray-100); padding: 2.5rem 0; text-align: center; border-bottom: 1px solid var(--gray-200);">
-            <div class="container">
-                <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Fresh Groceries,<br />Delivered to Your Door</h1>
-                <p style="font-size: 1.1rem; color: var(--gray-700); max-width: 600px; margin: 0 auto 1.5rem;">
-                    Quality produce, pantry staples, and more — order now and get delivery within 2 working days.
-                </p>
-                <a href="#featured" class="btn btn-order" style="display: inline-block;">Shop Now</a>
-            </div>
-        </section>
-
-        <!-- Categories -->
-        <section class="categories" style="padding: 2.5rem 0;">
-            <div class="container">
-                <h2 class="section-title">Shop by Category</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 1rem; text-align: center;">
-                    <div style="background: var(--gray-100); padding: 1rem; border-radius: var(--radius);"><span style="font-size: 2rem;">🍎</span><br />Fruits</div>
-                    <div style="background: var(--gray-100); padding: 1rem; border-radius: var(--radius);"><span style="font-size: 2rem;">🥬</span><br />Vegetables</div>
-                    <div style="background: var(--gray-100); padding: 1rem; border-radius: var(--radius);"><span style="font-size: 2rem;">🧀</span><br />Dairy</div>
-                    <div style="background: var(--gray-100); padding: 1rem; border-radius: var(--radius);"><span style="font-size: 2rem;">🥩</span><br />Meat</div>
-                    <div style="background: var(--gray-100); padding: 1rem; border-radius: var(--radius);"><span style="font-size: 2rem;">🍞</span><br />Bakery</div>
-                    <div style="background: var(--gray-100); padding: 1rem; border-radius: var(--radius);"><span style="font-size: 2rem;">🥫</span><br />Pantry</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Products -->
-        <section id="featured" style="padding: 2.5rem 0;">
-            <div class="container">
-                <h2 class="section-title">Featured Products</h2>
-                <div class="product-grid" id="featured-grid">
-                    <!-- Dynamically populated by index.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- About Yajora -->
-        <section id="about" style="padding: 2.5rem 0; background: var(--gray-100);">
-            <div class="container">
-                <h2 class="section-title">About Yajora</h2>
-                <p style="max-width: 700px;">
-                    Yajora is your trusted online grocery partner, bringing fresh, high-quality products straight to your doorstep.
-                    We carefully source our items to ensure you get the best, and we deliver within 2 working days so you can plan
-                    your meals with confidence. Whether you're stocking up on essentials or trying something new, Yajora makes
-                    grocery shopping simple and reliable.
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <div>
-                <span class="brand">YAJORA</span>
-                <p>Fresh groceries, delivered.</p>
-                <p style="font-size: 0.85rem; color: var(--gray-500);">Delivery within 2 working days.</p>
-            </div>
-            <nav class="footer-nav" aria-label="Footer Navigation">
-                <a href="index.html">Home</a>
-                <a href="#featured">Products</a>
-                <a href="#about">About</a>
-                <a href="cart.html">Cart</a>
-            </nav>
-            <div>
-                <p style="font-weight: 600;">Contact</p>
-                <p style="font-size: 0.9rem;">support@yajora.com</p>
-            </div>
-            <div class="copyright">
-                &copy; 2026 Yajora. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
