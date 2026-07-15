@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Yajora — Fresh Grocery, Delivered</title>
+    <meta name="description" content="Learn about Yajora — our story, mission, values, and the team behind your fresh grocery delivery." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>" />
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+        /* About page specific styles (minimal, reuses existing) */
+        .about-page-container {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .about-page-header {
+            margin-bottom: var(--spacing-2xl);
+            text-align: center;
+        }
+
+        .about-page-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .about-page-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-light);
+            margin-top: var(--spacing-xs);
+        }
+
+        .about-page-grid {
+            display: grid;
+            gap: var(--spacing-2xl);
+        }
+
+        .about-page-section {
+            background: var(--color-surface);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-border);
+        }
+
+        .about-page-section h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-page-section p {
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-page-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-page-section ul {
+            list-style: disc;
+            padding-left: var(--spacing-lg);
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .about-page-section ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+
+        .team-member {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .team-member .avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-sm);
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .team-member .name {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .team-member .role {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+        }
+
+        .team-member .location {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+            margin-top: var(--spacing-xs);
+        }
+
+        .team-member .experience {
+            font-size: var(--font-size-sm);
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-top: var(--spacing-xs);
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .value-item {
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border-radius: var(--border-radius-sm);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .value-item h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .value-item p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+            margin: 0;
+        }
+
+        @media (max-width: 639px) {
+            .values-list {
+                grid-template-columns: 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .about-page-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .about-page-section.full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .about-page-container {
+                padding: var(--spacing-3xl) 0;
+            }
+            .about-page-title {
+                font-size: var(--font-size-4xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <div class="logo-wrapper">
+                <a href="/" class="logo" aria-label="Yajora home">
+                    <span class="logo-wordmark">Yajora</span>
+                    <span class="logo-tagline">fresh grocery</span>
+                </a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+                <span class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+
+            <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/#categories" class="nav-link">Categories</a></li>
+                    <li><a href="/#products" class="nav-link">Products</a></li>
+                    <li><a href="/about.html" class="nav-link active" aria-current="page">About</a></li>
+                    <li><a href="/#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="/cart/cart.html" class="cart-link" aria-label="Shopping cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                    <span class="cart-count" aria-label="Cart items">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container about-page-container">
+            <div class="about-page-header">
+                <h1 class="about-page-title">About Yajora</h1>
+                <p class="about-page-subtitle">Fresh, local, and delivered with care — from our family to yours.</p>
+            </div>
+
+            <div class="about-page-grid">
+                <!-- Story -->
+                <div class="about-page-section full-width">
+                    <h2>Our Story</h2>
+                    <p>
+                        Yajora was born from a simple yet powerful belief: everyone deserves access to
+                        fresh, high-quality groceries without the hassle. What started as a small neighbourhood
+                        initiative in Hawapur West, Karbi Anglong, Assam, has grown into a trusted online
+                        grocery delivery platform serving families across the region.
+                    </p>
+                    <p>
+                        We partner directly with local farms, trusted suppliers, and artisanal producers to
+                        bring you the freshest produce, pantry staples, dairy products, and everyday essentials —
+                        all at fair prices. Every item is carefully selected to meet our quality standards,
+                        ensuring that what you receive is nothing short of excellent.
+                    </p>
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="about-page-section">
+                    <h2>Our Mission</h2>
+                    <p>
+                        To make fresh, healthy food accessible to every household by building a reliable,
+                        transparent, and community-driven grocery delivery service that prioritizes quality,
+                        convenience, and customer satisfaction above all else.
+                    </p>
+                </div>
+
+                <div class="about-page-section">
+                    <h2>Our Vision</h2>
+                    <p>
+                        To become the most trusted grocery partner in Northeast India — known for freshness,
+                        integrity, and a deep commitment to the communities we serve.
+                    </p>
+                </div>
+
+                <!-- Values -->
+                <div class="about-page-section full-width">
+                    <h2>Our Values</h2>
+                    <div class="values-list">
+                        <div class="value-item">
+                            <h3>🌱 Freshness First</h3>
+                            <p>We source directly from farms to ensure peak freshness and flavour.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>🤝 Community Trust</h3>
+                            <p>We build lasting relationships with customers, farmers, and suppliers.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>🌍 Sustainability</h3>
+                            <p>We support eco-friendly farming practices and reduce food waste.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>❤️ Quality Guarantee</h3>
+                            <p>We stand behind every product we deliver — 100% satisfaction guaranteed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team -->
+                <div class="about-page-section full-width">
+                    <h2>Meet the Team</h2>
+                    <p>
+                        Behind Yajora is a passionate team dedicated to bringing you the best grocery experience.
+                        From sourcing to delivery, we work together to ensure your satisfaction.
+                    </p>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="avatar">YS</div>
+                            <div class="name">Yadav Subba</div>
+                            <div class="role">Developer &amp; Maintainer</div>
+                            <div class="location">Hawapur West, Karbi Anglong, Assam</div>
+                            <div class="experience">2+ years experience in web development &amp; management</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar">Y</div>
+                            <div class="name">Yajora Team</div>
+                            <div class="role">Operations &amp; Customer Care</div>
+                            <div class="location">Karbi Anglong, Assam</div>
+                            <div class="experience">Dedicated to your satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="about-page-section full-width">
+                    <h2>Our Location</h2>
+                    <p>
+                        <strong>Yajora</strong><br />
+                        Hawapur West<br />
+                        Karbi Anglong, Assam<br />
+                        India
+                    </p>
+                    <p style="margin-top:var(--spacing-md);">
+                        We serve customers across Karbi Anglong and surrounding areas, with plans to expand
+                        to more regions in Northeast India.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="footer-logo">
+                    <span class="logo-wordmark">Yajora</span>
+                    <span class="logo-tagline">fresh grocery</span>
+                </a>
+                <p class="footer-description">
+                    Fresh, local, and delivered with care.<br />
+                    Yajora — your neighbourhood grocery, online.
+                </p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <ul class="footer-nav-list">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about.html" class="active">About</a></li>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms</a></li>
+                    <li><a href="/disclaimer.html">Disclaimer</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-contact" id="contact">
+                <h3 class="footer-contact-heading">Get in touch</h3>
+                <ul class="footer-contact-list">
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:hello@yajora.com">hello@yajora.com</a>
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p class="footer-copy">
+                    &copy; 2026 <a href="/">Yajora</a>. All rights reserved.
+                </p>
+                <p class="footer-credit">
+                    Built with care &bull; Fresh every day
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        (function () {
+            function getCart() {
+                try {
+                    var data = localStorage.getItem('yajora_cart');
+                    return data ? JSON.parse(data) : [];
+                } catch {
+                    return [];
+                }
+            }
+            function updateCartCount() {
+                var cart = getCart();
+                var total = 0;
+                for (var i = 0; i < cart.length; i++) {
+                    total += cart[i].quantity;
+                }
+                var el = document.querySelector('.cart-count');
+                if (el) el.textContent = total;
+            }
+            var navToggle = document.querySelector('.nav-toggle');
+            var primaryNav = document.getElementById('primary-nav');
+            if (navToggle && primaryNav) {
+                navToggle.addEventListener('click', function () {
+                    var isOpen = primaryNav.classList.toggle('is-open');
+                    this.setAttribute('aria-expanded', isOpen);
+                });
+            }
+            updateCartCount();
+        })();
+    </script>
+</body>
+</html>
