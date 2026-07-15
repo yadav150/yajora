@@ -1,27 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yajora – Fresh Groceries Delivered</title>
-  <meta name="description" content="Shop fresh groceries, quality produce, and pantry staples at Yajora. Fast delivery, great prices.">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- favicon.ico can be added later – skip for now -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yajora — Fresh Grocery, Delivered</title>
+    <meta name="description" content="Yajora offers fresh groceries, organic produce, and everyday essentials with fast delivery. Shop quality food online." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>" />
+    <!-- style.css will be linked after approval -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header id="main-header" class="site-header">
-    <!-- Header will be built by JavaScript -->
-  </header>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <div class="logo-wrapper">
+                <a href="/" class="logo" aria-label="Yajora home">
+                    <span class="logo-wordmark">Yajora</span>
+                    <span class="logo-tagline">fresh grocery</span>
+                </a>
+            </div>
 
-  <main id="main-content">
-    <h1>Welcome to Yajora</h1>
-    <p>Your grocery marketplace – coming soon.</p>
-  </main>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+                <span class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
 
-  <footer id="main-footer" class="site-footer">
-    <p>&copy; 2026 Yajora. All rights reserved.</p>
-  </footer>
+            <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                    <li><a href="#categories" class="nav-link">Categories</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
 
-  <script type="module" src="js/main.js"></script>
+            <div class="header-actions">
+                <button class="search-toggle" aria-label="Open search" aria-expanded="false" aria-controls="search-overlay">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </button>
+                <a href="/cart.html" class="cart-link" aria-label="Shopping cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                    <span class="cart-count" aria-label="Cart items">0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Search overlay -->
+        <div id="search-overlay" class="search-overlay" role="search" aria-hidden="true">
+            <div class="container search-container">
+                <form class="search-form" action="/search" method="get" role="search">
+                    <label for="search-input" class="sr-only">Search products</label>
+                    <input
+                    type="search"
+                    id="search-input"
+                    class="search-input"
+                    placeholder="Search for fresh produce, dairy, pantry &amp; more…"
+                    autocomplete="off"
+                    aria-describedby="search-hint"
+                    />
+                    <button type="submit" class="search-submit" aria-label="Submit search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                    </button>
+                    <button type="button" class="search-close" aria-label="Close search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </form>
+                <div id="search-hint" class="search-hint">Type at least 2 characters to see suggestions</div>
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <span class="hero-badge">Fresh &amp; Local</span>
+                    <h1 id="hero-heading" class="hero-title">
+                        Groceries that<br />
+                        <span class="hero-highlight">feel good</span>
+                    </h1>
+                    <p class="hero-description">
+                        Farm-fresh produce, organic pantry staples, and everyday essentials —
+                        delivered to your door with care.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#products" class="btn btn-primary btn-large">Shop Now</a>
+                        <a href="#categories" class="btn btn-outline btn-large">Browse Categories</a>
+                    </div>
+                    <ul class="hero-stats">
+                        <li>
+                            <span class="stat-number">1,200+</span>
+                            <span class="stat-label">Happy customers</span>
+                        </li>
+                        <li>
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">On-time delivery</span>
+                        </li>
+                        <li>
+                            <span class="stat-number">4.9★</span>
+                            <span class="stat-label">Average rating</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-image-placeholder">
+                        <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" style="display:block;background:linear-gradient(145deg,#f0f4e8 0%,#e6ecda 100%);border-radius:20px;">
+                            <rect width="500" height="400" rx="20" fill="#e6ecda" />
+                            <circle cx="250" cy="160" r="70" fill="#cbd5b0" opacity="0.4" />
+                            <circle cx="180" cy="240" r="45" fill="#b8c79a" opacity="0.3" />
+                            <circle cx="330" cy="240" r="50" fill="#b8c79a" opacity="0.3" />
+                            <circle cx="250" cy="300" r="55" fill="#a8b889" opacity="0.25" />
+                            <rect x="140" y="130" width="220" height="160" rx="12" fill="#d6dfc0" opacity="0.5" />
+                            <rect x="160" y="150" width="80" height="60" rx="8" fill="#aec09a" opacity="0.6" />
+                            <rect x="260" y="150" width="80" height="60" rx="8" fill="#aec09a" opacity="0.6" />
+                            <rect x="160" y="220" width="80" height="60" rx="8" fill="#aec09a" opacity="0.6" />
+                            <rect x="260" y="220" width="80" height="60" rx="8" fill="#aec09a" opacity="0.6" />
+                            <text x="250" y="370" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#6b7d5e" font-weight="500" letter-spacing="1">Fresh produce, delivered</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CATEGORIES ===== -->
+        <section id="categories" class="categories" aria-labelledby="categories-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="categories-heading" class="section-title">Shop by Category</h2>
+                    <p class="section-subtitle">Find exactly what you need, fast</p>
+                </div>
+                <ul class="category-grid">
+                    <li class="category-card">
+                        <a href="/category/fresh-produce.html" class="category-link">
+                            <span class="category-icon" aria-hidden="true">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                            </span>
+                            <span class="category-name">Fresh Produce</span>
+                            <span class="category-count">48 items</span>
+                        </a>
+                    </li>
+                    <li class="category-card">
+                        <a href="/category/dairy-eggs.html" class="category-link">
+                            <span class="category-icon" aria-hidden="true">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                            </span>
+                            <span class="category-name">Dairy &amp; Eggs</span>
+                            <span class="category-count">32 items</span>
+                        </a>
+                    </li>
+                    <li class="category-card">
+                        <a href="/category/pantry.html" class="category-link">
+                            <span class="category-icon" aria-hidden="true">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                            </span>
+                            <span class="category-name">Pantry Staples</span>
+                            <span class="category-count">56 items</span>
+                        </a>
+                    </li>
+                    <li class="category-card">
+                        <a href="/category/bakery.html" class="category-link">
+                            <span class="category-icon" aria-hidden="true">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-5 18.7"/><path d="M12 2a10 10 0 0 1 5 18.7"/><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                            </span>
+                            <span class="category-name">Bakery</span>
+                            <span class="category-count">24 items</span>
+                        </a>
+                    </li>
+                    <li class="category-card">
+                        <a href="/category/meat-seafood.html" class="category-link">
+                            <span class="category-icon" aria-hidden="true">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                            </span>
+                            <span class="category-name">Meat &amp; Seafood</span>
+                            <span class="category-count">28 items</span>
+                        </a>
+                    </li>
+                    <li class="category-card">
+                        <a href="/category/beverages.html" class="category-link">
+                            <span class="category-icon" aria-hidden="true">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M5 6v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6"/><path d="M8 2l-2 4"/><path d="M16 2l2 4"/></svg>
+                            </span>
+                            <span class="category-name">Beverages</span>
+                            <span class="category-count">36 items</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== PRODUCTS ===== -->
+        <section id="products" class="products" aria-labelledby="products-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="products-heading" class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Handpicked freshest choices for you</p>
+                </div>
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be rendered by JavaScript -->
+                    <!-- Static fallback structure for initial load -->
+                </div>
+                <div class="products-cta">
+                    <a href="/all-products.html" class="btn btn-outline">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="container about-inner">
+                <div class="about-content">
+                    <span class="about-badge">About Yajora</span>
+                    <h2 id="about-heading" class="about-title">Good food starts<br />with <span class="about-highlight">good people</span></h2>
+                    <p class="about-description">
+                        Yajora was born from a simple belief: everyone deserves access to
+                        fresh, high-quality groceries without the hassle. We partner with
+                        local farms and trusted suppliers to bring you the best produce,
+                        pantry goods, and everyday essentials — all at fair prices.
+                    </p>
+                    <ul class="about-values">
+                        <li>
+                            <span class="value-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </span>
+                            <span>Locally sourced</span>
+                        </li>
+                        <li>
+                            <span class="value-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </span>
+                            <span>100% quality guarantee</span>
+                        </li>
+                        <li>
+                            <span class="value-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                            </span>
+                            <span>Sustainable practices</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-visual" aria-hidden="true">
+                    <div class="about-image-placeholder">
+                        <svg width="100%" height="100%" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid meet" style="display:block;background:linear-gradient(135deg,#eef3e7 0%,#dce4ce 100%);border-radius:20px;">
+                            <rect width="480" height="360" rx="20" fill="#dce4ce" />
+                            <circle cx="240" cy="120" r="80" fill="#c2d0b0" opacity="0.3" />
+                            <circle cx="160" cy="220" r="60" fill="#b0c09a" opacity="0.25" />
+                            <circle cx="320" cy="220" r="65" fill="#b0c09a" opacity="0.25" />
+                            <rect x="120" y="100" width="240" height="180" rx="16" fill="#d0dcc0" opacity="0.5" />
+                            <rect x="140" y="120" width="90" height="70" rx="10" fill="#b8c99e" opacity="0.5" />
+                            <rect x="250" y="120" width="90" height="70" rx="10" fill="#b8c99e" opacity="0.5" />
+                            <rect x="140" y="200" width="90" height="70" rx="10" fill="#b8c99e" opacity="0.5" />
+                            <rect x="250" y="200" width="90" height="70" rx="10" fill="#b8c99e" opacity="0.5" />
+                            <text x="240" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#5d6e4e" font-weight="500" letter-spacing="0.5">Quality you can taste</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="footer-logo">
+                    <span class="logo-wordmark">Yajora</span>
+                    <span class="logo-tagline">fresh grocery</span>
+                </a>
+                <p class="footer-description">
+                    Fresh, local, and delivered with care.<br />
+                    Yajora — your neighbourhood grocery, online.
+                </p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <ul class="footer-nav-list">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms</a></li>
+                    <li><a href="/disclaimer.html">Disclaimer</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-contact" id="contact">
+                <h3 class="footer-contact-heading">Get in touch</h3>
+                <ul class="footer-contact-list">
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:hello@yajora.com">hello@yajora.com</a>
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p class="footer-copy">
+                    &copy; 2026 <a href="/">Yajora</a>. All rights reserved.
+                </p>
+                <p class="footer-credit">
+                    Built with care &bull; Fresh every day
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <!-- index.js will be linked after approval -->
+    <script src="index.js"></script>
 </body>
 </html>
